@@ -31,7 +31,13 @@ class ELCmn(object):
                     self.commonness[mention] = dict()
                 self.commonness[mention][entity] = freq
 
-        # TODO compute commonness by normalizing with total value
+        for m in self.commonness:
+            for e in self.commonness[m]:
+                get = self.commonness[m].get("_total", 0)
+                if e != "_total" and get != 0:
+                    self.commonness[m][e] /= float(get)
+
+            # TODO compute commonness by normalizing with total value
 
     def annotate(self, doc, doc_id):
         """Performs entity linking and annotates the query."""
@@ -66,9 +72,10 @@ class ELCmn(object):
         disamb_ens = {}
         # For each mention, select a single entity (or none) from the candidates
         for m in candidate_entities.keys():
-            # here we just return the first candidate entity with score 1.0
-            disamb_ens[m] = (candidate_entities[m][0], 1.0)
-            # TODO select the entity with the highest commonness score
+
+            filtered = filter(lambda (x): x[0] in candidate_entities[m], self.commonness[m].items())
+            disamb_ens[m] = sorted(filtered, key=lambda x: x[1], reverse=True)[0];
+
 
         return disamb_ens
 
