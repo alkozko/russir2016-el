@@ -73,7 +73,7 @@ class ELCmn(object):
         # For each mention, select a single entity (or none) from the candidates
         for m in candidate_entities.keys():
 
-            filtered = filter(lambda (x): x[0] in candidate_entities[m], self.commonness[m].items())
+            filtered = filter(lambda x: x[0] in candidate_entities[m], self.commonness[m].items())
             disamb_ens[m] = sorted(filtered, key=lambda x: x[1], reverse=True)[0];
 
 

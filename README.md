@@ -8,11 +8,9 @@ Presentation slides: [http://bit.ly/russir2016-el](http://bit.ly/russir2016-el)
 
   - Complete the missing parts in [el_cmn.py](nordlys/el_cmn.py) to implement a simple commonness baseline.
     * I.e., link each mention to the entity with the highest commonness score.
-    * Sample solution: [el_cmn_sol.py](nordlys/el_cmn_sol.py)
   - Implement TAGME's voting approach for disambiguation by completing [el_tagme.py](nordlys/el_tagme.py). 
     * This builds on the previous exercise and already includes commonness computation.
     * We note that the original TAGME approach includes additional pruning steps, which are disregarded here (those would make a big difference in performance though). 
-    * Sample solution: [el_tagme_sol.py](nordlys/el_tagme_sol.py)
   - Optionally, you can implement any other disambiguation approach (including novel ideas of your own).
   - The input documents are found in [data/snippets.txt](data/snippets.txt); the first column is the docID
   - The results (one annotation per line) need to be written in a file using the following format: `docID score entityID mention page-id`
@@ -58,4 +56,4 @@ Python v2.7 is required.
 
 ## Credits
 
-This exercise was created based on the [TAGME reproducibility code](https://github.com/hasibi/TAGME_Reproducibility) developed by [Faegheh Hasibi](http://hasibi.com/). 
+This exercise was created based on the [TAGME reproducibility code] developed by [Faegheh Hasibi](http://hasibi.com/). 
