@@ -57,7 +57,7 @@ class EvaluatorAnnot(object):
               "Rec:  " + str(round(total_rec, 4)) + "\n" + \
               "F1:   " + str(round(total_f, 4)) + "\n" + \
               "all:  " + str(round(total_prec, 4)) + ", " + str(round(total_rec, 4)) + ", " + str(round(total_f, 4))
-        print log
+        print(log)
         metrics = {'prec': total_prec, 'rec': total_rec, 'f': total_f}
         return metrics
 
@@ -141,14 +141,14 @@ def parse_file(file_name, res=False):
 
 def main(args):
     if len(args) < 2:
-        print "\tUsage: <qrel_file> <result_file> [score_threshold]"
+        print("\tUsage: <qrel_file> <result_file> [score_threshold]")
         exit(0)
     print(args)
-    print "parsing qrel ..."
+    print("parsing qrel ...")
     qrels, null_qrels = parse_file(args[0])  # here qrel does not contain null entities
-    print "parsing results ..."
+    print("parsing results ...")
     results = parse_file(args[1], res=True)[0]
-    print "evaluating ..."
+    print("evaluating ...")
     score_th = float(args[2]) if len(args) >= 3 else 0
     evaluator = EvaluatorAnnot(qrels, results, score_th)
     evaluator.eval(erd_eval_query)

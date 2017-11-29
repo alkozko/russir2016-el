@@ -31,12 +31,6 @@ class ELCmn(object):
                     self.commonness[mention] = dict()
                 self.commonness[mention][entity] = freq
 
-        for m in self.commonness:
-            for e in self.commonness[m]:
-                get = self.commonness[m].get("_total", 0)
-                if e != "_total" and get != 0:
-                    self.commonness[m][e] /= float(get)
-
             # TODO compute commonness by normalizing with total value
 
     def annotate(self, doc, doc_id):
