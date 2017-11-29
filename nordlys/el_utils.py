@@ -12,7 +12,7 @@ class ELUtils(object):
         print("---")
         print("Mention detection")
         print("---")
-        for k, v in candidate_ens.iteritems():
+        for k, v in candidate_ens.items():
             print("\t'" + k + "'\t" + ", ".join(v))
 
     @staticmethod
@@ -20,13 +20,13 @@ class ELUtils(object):
         print("---")
         print("Disambiguation")
         print("---")
-        for m, (e, score) in disamb_ens.iteritems():
+        for m, (e, score) in disamb_ens.items():
             print("\t'" + m + "' => " + e + " (" + str(score) + ")")
 
     @staticmethod
     def write_to_file(doc_id, out_file, linked_ens):
         """Writes entity linking results to output file."""
         out_str = ""
-        for men, (en, score) in linked_ens.iteritems():
+        for men, (en, score) in linked_ens.items():
             out_str += str(doc_id) + "\t" + str(score) + "\t" + en + "\t" + men + "\tpage-id" + "\n"
         out_file.write(out_str)

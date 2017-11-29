@@ -23,7 +23,7 @@ class ELCmn(object):
     def get_commonness(self):
         """Loads statistics and computes commonness."""
         # load mention-entity stat
-        with open(STATS_MENTION_ENTITY, 'rb') as tsvfile:
+        with open(STATS_MENTION_ENTITY, 'rt', encoding='utf8') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t')
             for row in reader:
                 mention, entity, freq = row[0], row[1], int(row[2])

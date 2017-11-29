@@ -28,7 +28,7 @@ class ELTagme(object):
     def get_commonness(self):
         """Loads statistics and computes commonness."""
         # load mention-entity stat
-        with open(STATS_MENTION_ENTITY, 'rb') as tsvfile:
+        with open(STATS_MENTION_ENTITY, 'rt') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t')
             for row in reader:
                 mention, entity, freq = row[0], row[1], int(row[2])
@@ -46,14 +46,14 @@ class ELTagme(object):
     def load_inlinks_stat(self):
         """Loads inlinks statistics."""
         # entity inlink count
-        with open(STATS_ENTITY_INLINKS, 'rb') as tsvfile:
+        with open(STATS_ENTITY_INLINKS, 'rt') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t')
             for row in reader:
                 entity, cnt = row[0], int(row[1])
                 self.entity_inlinks[entity] = cnt
 
         # entity pairs inlink count
-        with open(STATS_ENTITY_PAIRS_INLINKS, 'rb') as tsvfile:
+        with open(STATS_ENTITY_PAIRS_INLINKS, 'rt') as tsvfile:
             reader = csv.reader(tsvfile, delimiter='\t')
             for row in reader:
                 e1, e2, cnt = row[0], row[1], int(row[2])
